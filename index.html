@@ -3,97 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Summer Glow Protocol | Dott.ssa Ferrandino Rossella</title>
+    <title>The Glow Code Club | Summer Glow Protocol</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #d4af37; --burgundy: #a32a2a; --text: #333; }
-        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.6; margin: 0; background: #fff; }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        :root {
+            --bg-color: #fdfbf7;
+            --primary-color: #802222; /* Bordeaux */
+            --accent-color: #d4af37; /* Oro per il Summer Glow */
+            --text-color: #333;
+            --white: #ffffff;
+        }
         
-        /* Header stile documento */
-        header { border-top: 3px solid var(--burgundy); display: flex; justify-content: space-between; padding: 10px 0; margin-bottom: 30px; font-weight: bold; color: var(--burgundy); font-size: 0.8rem; }
-        
-        .main-title { font-family: 'Playfair Display', serif; color: var(--gold); text-align: center; font-size: 2.8rem; text-transform: uppercase; margin: 10px 0; letter-spacing: 2px; }
-        .blue-subtitle { color: #3498db; text-align: center; font-weight: bold; margin-bottom: 40px; }
+        * { scroll-behavior: smooth; box-sizing: border-box; }
 
-        h2.section-title { color: var(--gold); font-size: 1.8rem; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .highlight { font-weight: bold; }
-        
-        /* Tabella Fasi */
-        .fasi-table { width: 100%; border-collapse: collapse; margin: 30px 0; }
-        .fasi-table td { padding: 20px; border-bottom: 1px solid #eee; vertical-align: top; }
-        .week-label { color: var(--gold); font-weight: bold; display: block; margin-bottom: 5px; }
-        .month-label { color: var(--burgundy); font-weight: bold; font-size: 1.1rem; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.6;
+        }
 
-        /* Box Prezzi */
-        .price-card { border: 2px solid #eee; border-radius: 15px; padding: 30px; text-align: center; margin-top: 50px; background: #fdfdfd; }
-        .price-tag { font-size: 2.5rem; color: var(--burgundy); font-weight: bold; margin: 10px 0; }
-        .old-price { text-decoration: line-through; opacity: 0.5; font-size: 1.2rem; }
-        
-        /* Bottone Stripe */
-        .btn-stripe { background: var(--burgundy); color: white; padding: 20px 40px; text-decoration: none; border-radius: 50px; display: inline-block; font-weight: bold; font-size: 1.2rem; margin-top: 20px; transition: 0.3s; box-shadow: 0 4px 15px rgba(163, 42, 42, 0.3); }
-        .btn-stripe:hover { transform: translateY(-3px); background: #801a1a; }
+        /* --- NAVIGAZIONE --- */
+        nav {
+            background-color: var(--white);
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
 
-        footer { text-align: right; margin-top: 50px; color: var(--gold); font-weight: bold; font-style: italic; }
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(rgba(253, 251, 247, 0.8), rgba(253, 251, 247, 0.8));
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--text-color);
+            margin-top: 10px;
+        }
+
+        /* --- SEZIONI --- */
+        section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .highlight-box {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            margin-bottom: 40px;
+        }
+
+        /* --- PROTOCOLLO SUMMER GLOW --- */
+        .protocol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .step-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .step-card i {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- BOTTONI ANIMATI (PULSE) --- */
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(128, 34, 34, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(128, 34, 34, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(128, 34, 34, 0); }
+        }
+
+        .btn-stripe {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 18px 45px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-top: 30px;
+            animation: pulse 2.5s infinite;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-stripe:hover {
+            background-color: #a02d2d;
+            transform: translateY(-3px);
+            animation: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            margin-top: 80px;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
+<nav>
+    <a href="#home">Home</a>
+    <a href="#protocol">Summer Glow</a>
+    <a href="#chi-siamo">La Visione</a>
+    <a href="#shop">Acquista</a>
+</nav>
+
+<section id="home">
     <header>
-        <span>Dott.ssa Ferrandino Rossella</span>
-        <span>BIOLOGA NUTRIZIONISTA</span>
+        <h1>THE GLOW CODE CLUB</h1>
+        <div class="tagline">Ingegneria del Benessere</div>
     </header>
+</section>
 
-    <h1 class="main-title">Summer Glow Protocol</h1>
-    <p class="blue-subtitle">Pacchetto 3 mesi (giugno + luglio + agosto)</p>
-
-    <h2 class="section-title">Glow reset</h2>
-    <p>L'estate è alle porte e spesso la viviamo con l'ansia della "prova costume". Ma se quest'anno cambiassimo <span class="highlight">prospettiva</span>? Il mio obiettivo per te non è solo farti indossare un abito di una taglia in meno, ma aiutarti a trovare il tuo <span class="highlight">Glow</span>: quella luminosità che nasce da un corpo sgonfio, energico e nutrito correttamente.</p>
-
-    <div style="background: #fffaf0; padding: 25px; border-radius: 10px; font-style: italic; text-align: center; margin: 30px 0;">
-        "Io sarò al tuo fianco per tutto questo percorso. Questi PDF non sono semplici dispense, ma la tua bussola per non perdere la rotta mentre ti godi il sole!!"
+<section id="protocol">
+    <div class="highlight-box">
+        <h2>SUMMER GLOW PROTOCOL</h2>
+        <p style="font-size: 1.2rem; text-align: center;">
+            L'integrazione perfetta tra logica ingegneristica e scienza nutrizionale per preparare il tuo corpo alla stagione estiva.
+        </p>
     </div>
 
-    <table class="fasi-table">
-        <tr>
-            <td width="40%">
-                <span class="week-label">Settimana 1-4</span>
-                <span class="month-label">🍏 Giugno: Fase "Reset & Detox"</span>
-            </td>
-            <td>L'obiettivo è sgonfiare il corpo e preparare la pelle al sole. Focus su fibre e acque funzionali.</td>
-        </tr>
-        <tr>
-            <td>
-                <span class="week-label">Settimana 5-8</span>
-                <span class="month-label">🥥 Luglio: Fase "Energia & Idratazione"</span>
-            </td>
-            <td>Vitalità e gestione dei pasti fuori casa (aperitivi e cene). Sali minerali contro la stanchezza.</td>
-        </tr>
-        <tr>
-            <td>
-                <span class="week-label">Settimana 9-12</span>
-                <span class="month-label">🍑 Agosto: Fase "Consapevolezza"</span>
-            </td>
-            <td>Mindful eating, relax e mantenimento dei risultati. Prepareremo il terreno per settembre.</td>
-        </tr>
-    </table>
+    <div class="protocol-grid">
+        <div class="step-card">
+            <h3>01. Reset Metabolico</h3>
+            <p>Ottimizzazione dei livelli di cortisolo per eliminare la ritenzione idrica e lo stress sistemico.</p>
+        </div>
+        <div class="step-card">
+            <h3>02. Skin Optimization</h3>
+            <p>Nutrizione cellulare specifica per massimizzare la luminosità della pelle e la protezione solare interna.</p>
+        </div>
+        <div class="step-card">
+            <h3>03. Bio-Hacking Estivo</h3>
+            <p>Strategie di integrazione e idratazione avanzata per mantenere alte performance anche con il caldo.</p>
+        </div>
+    </div>
+</section>
 
-    <div class="price-card">
-        <h2 style="color: var(--burgundy); margin-top: 0;">OFFERTA SPECIALE ONLINE</h2>
-        <p>Protocollo Completo + Piano Alimentare su misura + Guida Glow-Up</p>
-        <div class="old-price">€184,80</div>
-        <div class="price-tag">€150,00</div>
-        <p><small>*Prezzo valido per prenotazioni entro il 20/05</small></p>
+<section id="chi-siamo" style="background-color: #f7f2ed; border-radius: 50px;">
+    <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <h2>Perché facciamo questo?</h2>
+        <p>
+            Siamo due fratelli con una missione chiara: applicare la precisione dell'<strong>ingegneria</strong> alla <strong>nutrizione umana</strong>. 
+            Il "Glow" non è un miracolo estetico, ma il risultato di un sistema biologico che funziona senza errori di codice.
+        </p>
+    </div>
+</section>
+
+<section id="shop" style="text-align: center;">
+    <h2>Inizia la tua Trasformazione</h2>
+    <div class="card" style="background: white; padding: 50px; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.05);">
+        <h3>Summer Glow Full Access</h3>
+        <p>Accesso completo al protocollo, lista spesa bio-ottimizzata e guida al reset metabolico.</p>
+        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary-color);">€79.00</div>
         
-        <!-- INSERISCI QUI IL TUO LINK STRIPE -->
-        <a href="IL_TUO_LINK_STRIPE" class="btn-stripe">ACQUISTA IL PROTOCOLLO</a>
+        <a href="IL_TUO_LINK_STRIPE_QUI" class="btn-stripe">
+            Acquista Ora (Apple Pay / Klarna / Carta)
+        </a>
+        
+        <p style="font-size: 0.8rem; margin-top: 15px; opacity: 0.6;">
+            Pagamento sicuro via Stripe. Disponibile in 3 rate con Klarna.
+        </p>
     </div>
+</section>
 
-    <footer>
-        La tua nutrizionista, Dott.ssa Ferrandino Rossella.
-    </footer>
-</div>
+<footer>
+    <p>&copy; 2026 The Glow Code Club | Designed for Evolution</p>
+    <p style="font-size: 0.7rem; opacity: 0.8;">Ingegneria della Nutrizione & Ottimizzazione Biologica</p>
+</footer>
 
 </body>
 </html>
