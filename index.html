@@ -7,198 +7,241 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #fdfbf7;
-            --primary-color: #802222; /* Bordeaux */
-            --accent-color: #d4af37; /* Oro */
-            --text-color: #333;
-            --white: #ffffff;
+            --gold: #d4af37;
+            --burgundy: #a32a2a;
+            --text-gray: #444;
+            --light-bg: #fdfdfd;
         }
-        
-        * { scroll-behavior: smooth; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
+            color: var(--text-gray);
             line-height: 1.6;
+            margin: 0;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
         header {
-            text-align: center;
-            padding: 80px 20px 40px;
+            border-top: 2px solid var(--burgundy);
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
         }
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            font-size: 3rem;
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        .subtitle {
-            color: #3498db;
+        .header-name {
+            color: var(--burgundy);
+            font-size: 0.8rem;
             font-weight: bold;
-            letter-spacing: 1px;
-            margin-top: 10px;
         }
 
-        section {
-            padding: 40px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
+        .header-title-main {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: 3rem;
+            text-align: center;
+            text-transform: uppercase;
+            margin: 20px 0;
+            letter-spacing: 2px;
+        }
+
+        /* --- SEZIONE GLOW RESET INTRO --- */
+        .glow-reset-section {
+            margin-bottom: 60px;
+            padding: 20px;
+        }
+
+        .glow-reset-title {
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+
+        .highlight-glow {
+            font-weight: 600;
+            color: #000;
+        }
+
+        .quote-box {
+            font-style: italic;
+            text-align: center;
+            padding: 30px;
+            margin: 40px 0;
+            border-left: 4px solid var(--gold);
+            background: #fffaf0;
+            font-size: 1.1rem;
         }
 
         /* --- GRIGLIA PREZZI --- */
-        .pricing-container {
+        .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
         }
 
-        .card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            text-align: center;
+        .pricing-card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 25px;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             display: flex;
             flex-direction: column;
-            border: 1px solid #eee;
         }
 
-        .card h3 {
-            font-family: 'Playfair Display', serif;
-            color: var(--primary-color);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+        .pricing-card h3 {
+            color: var(--burgundy);
+            border-bottom: 2px solid var(--burgundy);
+            padding-bottom: 10px;
+            margin-top: 0;
+            text-transform: uppercase;
         }
 
-        .features {
+        .service-list {
             list-style: none;
             padding: 0;
-            text-align: left;
-            margin-bottom: 30px;
+            font-size: 0.9rem;
             flex-grow: 1;
         }
 
-        .features li {
-            margin-bottom: 12px;
-            padding-left: 20px;
+        .service-list li {
+            margin-bottom: 10px;
+            padding-left: 15px;
             position: relative;
-            font-size: 0.95rem;
         }
 
-        .features li::before {
-            content: "✦";
-            color: var(--accent-color);
+        .service-list li::before {
+            content: "•";
+            color: var(--gold);
+            font-weight: bold;
             position: absolute;
             left: 0;
         }
 
-        .price-tag {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: var(--primary-color);
+        .price-box {
+            background: #fffaf0;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
         }
 
-        .old-price {
+        .price-now {
+            color: var(--burgundy);
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        .price-old {
             text-decoration: line-through;
             opacity: 0.5;
-            font-size: 1.1rem;
-        }
-
-        .promo-info {
-            font-size: 0.85rem;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        /* --- BOTTONE PULSANTE --- */
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(128, 34, 34, 0.4); }
-            70% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(128, 34, 34, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(128, 34, 34, 0); }
+            font-size: 0.9rem;
         }
 
         .btn-stripe {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 15px 30px;
+            background-color: var(--burgundy);
+            color: white;
+            padding: 15px 20px;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            animation: pulse 2.5s infinite;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
             transition: 0.3s;
         }
 
         .btn-stripe:hover {
-            transform: translateY(-3px);
-            animation: none;
+            background-color: #801a1a;
+            transform: translateY(-2px);
         }
 
-        footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 0.8rem;
-            opacity: 0.7;
+        @media (max-width: 768px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+            .header-title-main { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <p style="color: var(--primary-color); font-weight: bold; margin-bottom: 0;">Dott.ssa Ferrandino Rossella | Biologa Nutrizionista</p>
-    <h1>Summer Glow Protocol</h1>
-    <div class="subtitle">PACCHETTO 3 MESI (GIUGNO + LUGLIO + AGOSTO)</div>
-</header>
+<div class="container">
+    <header>
+        <div class="header-name">Dott.ssa Ferrandino Rossella</div>
+        <div class="header-name">BIOLOGA NUTRIZIONISTA</div>
+    </header>
 
-<section>
-    <div class="pricing-container">
-        
-        <!-- CARD ONLINE -->
-        <div class="card">
-            <h3>Protocollo Online</h3>
-            <ul class="features">
-                <li><strong>Prima Visita:</strong> Piano alimentare su misura (PDF), Guida "Glow-Up" del mese e Analisi Antropometrica.</li>
-                <li><strong>2 Controlli:</strong> Analisi dei progressi, adattamento piano e nuovi PDF educativi.</li>
-                <li><strong>Glow Kit:</strong> Materiale digitale incluso.</li>
+    <h1 class="header-title-main">Summer Glow Protocol</h1>
+
+    <!-- NUOVA SEZIONE GLOW RESET -->
+    <section class="glow-reset-section">
+        <h2 class="glow-reset-title">Glow Reset</h2>
+        <p class="intro-text">
+            L’estate è alle porte e spesso la viviamo con l’ansia della "prova costume". Ma se quest’anno cambiassimo prospettiva? Il mio obiettivo per te non è solo farti indossare un abito di una taglia in meno, ma aiutarti a trovare il tuo <span class="highlight-glow">Glow</span>: quella luminosità che nasce da un corpo sgonfio, energico e nutrito correttamente.
+        </p>
+
+        <h3 style="color: var(--burgundy);">Cosa otterrai?</h3>
+        <p class="intro-text">
+            Ho creato per te il percorso <strong>Summer Glow PROTOCOL</strong>, un “viaggio” di 3 mesi (Giugno, Luglio e Agosto) dove non riceverai solo una dieta, ma imparerai un vero metodo alimentare. Sei pronta/o a brillare? Iniziamo a Giugno per arrivare ad Agosto nella tua versione migliore.
+        </p>
+
+        <div class="quote-box">
+            "Io sarò al tuo fianco per tutto questo percorso. Questi PDF non sono semplici dispense, ma la tua bussola per non perdere la rotta mentre ti godi il sole!! Il tuo glow-up non è un traguardo, ma un nuovo modo di vivere te stess*!"
+        </div>
+    </section>
+
+    <h2 style="text-align: center; color: var(--gold); font-family: 'Playfair Display', serif;">Scegli il tuo percorso</h2>
+
+    <div class="pricing-grid">
+        <!-- MODALITÀ ONLINE -->
+        <div class="pricing-card">
+            <h3>Percorso Online</h3>
+            <ul class="service-list">
+                <li>Piano Alimentare su misura (PDF)</li>
+                <li>Guida "Glow-Up" del mese</li>
+                <li>Analisi Antropometrica (altezza, peso, circonferenze)</li>
+                <li>Analisi dei Progressi e Adattamento del Piano</li>
             </ul>
-            <div class="promo-info">Prenota entro il 20/05 per lo sconto:</div>
-            <div class="price-tag">€150 <span class="old-price">€184,80</span></div>
-            <p class="promo-info">(Dal 21/05 al 31/05 il prezzo è €160)</p>
-            <a href="LINK_STRIPE_ONLINE" class="btn-stripe">Acquista Online</a>
+            <div class="price-box">
+                <p>Prenota entro il 20/05:<br>
+                <span class="price-now">€150</span> <span class="price-old">anziché €184,80</span></p>
+            </div>
+            <a href="LINK_STRIPE_ONLINE" class="btn-stripe">ISCRIVITI ONLINE</a>
         </div>
 
-        <!-- CARD IN STUDIO -->
-        <div class="card" style="border: 2px solid var(--accent-color);">
-            <div style="background: var(--accent-color); color: white; font-size: 0.7rem; padding: 5px; border-radius: 10px; width: 100px; margin: -50px auto 20px;">CONSIGLIATO</div>
-            <h3>Protocollo In Studio</h3>
-            <ul class="features">
-                <li><strong>Prima Visita:</strong> Bioimpedenziometria (BIVA) per massa magra/grassa e idratazione.</li>
-                <li><strong>Controlli Fisici:</strong> Check della composizione corporea con strumentazione professionale.</li>
-                <li><strong>Piano Personalizzato:</strong> Consegna digitale e cartacea + Guida Glow-Up.</li>
-                <li><strong>Glow Kit:</strong> Kit fisico incluso.</li>
+        <!-- MODALITÀ IN STUDIO -->
+        <div class="pricing-card">
+            <h3>Percorso In Studio</h3>
+            <ul class="service-list">
+                <li>Tutti i servizi del piano online</li>
+                <li><strong>Bioimpedenziometria (BIVA)</strong> professionale</li>
+                <li>Valutazione composizione corporea (massa magra/grassa)</li>
+                <li>Check idratazione e stato cellulare</li>
             </ul>
-            <div class="promo-info">Prenota entro il 20/05 per lo sconto:</div>
-            <div class="price-tag">€220 <span class="old-price">€268,80</span></div>
-            <p class="promo-info">(Dal 21/05 al 31/05 il prezzo è €235)</p>
-            <a href="LINK_STRIPE_STUDIO" class="btn-stripe">Prenota in Studio</a>
+            <div class="price-box">
+                <p>Prenota entro il 20/05:<br>
+                <span class="price-now">€220</span> <span class="price-old">anziché €268,80</span></p>
+            </div>
+            <a href="LINK_STRIPE_STUDIO" class="btn-stripe">PRENOTA IN STUDIO</a>
         </div>
-
     </div>
 
-    <p style="text-align: center; margin-top: 50px; font-weight: bold; color: var(--primary-color);">
-        Il pagamento avverrà in un'unica tranche entro il 31 maggio.
-    </p>
-</section>
-
-<footer>
-    &copy; 2026 Dott.ssa Ferrandino Rossella | Summer Glow Protocol
-</footer>
+    <footer style="text-align: center; padding-top: 50px; border-top: 1px solid #eee; margin-top: 50px; font-size: 0.8rem; color: #888;">
+        La tua nutrizionista, <strong>Dott.ssa Ferrandino Rossella</strong>.
+    </footer>
+</div>
 
 </body>
 </html>
