@@ -54,6 +54,14 @@
         }
         .card:hover { transform: translateY(-5px); }
         .card h3 { color: var(--primary-color); margin-top: 0; }
+
+        /* --- STILE E ANIMAZIONE BOTTONI --- */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
         .btn {
             display: inline-block;
             background-color: var(--primary-color);
@@ -63,7 +71,25 @@
             border-radius: 50px;
             margin-top: 20px;
             font-weight: 600;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite ease-in-out; /* Battito continuo */
+            box-shadow: 0 4px 10px rgba(128, 34, 34, 0.2);
         }
+
+        .btn:hover {
+            transform: scale(1.1); /* Si ingrandisce al passaggio */
+            background-color: #a02d2d; /* Diventa un bordeaux più chiaro */
+            box-shadow: 0 6px 20px rgba(128, 34, 34, 0.4);
+            animation: none; /* Ferma il pulse quando ci sei sopra */
+        }
+
+        .price {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-top: 15px;
+        }
+
         footer {
             text-align: center;
             padding: 40px;
@@ -81,22 +107,20 @@
 
 <div class="container">
     <p style="text-align: center; max-width: 700px; margin: 0 auto;">
-        Benvenuti nel sistema di ottimizzazione biologica. Qui la logica dell'ingegneria incontra la scienza della nutrizione per resettare il tuo Glow naturale.
+        Benvenuti nel sistema di ottimizzazione biologica. Qui la logica dell'ingegneria incontra la scienza della nutrizione per resettare il tuo Glow naturale. [cite: 19]
     </p>
 
     <div class="grid">
-        <!-- Piano 1 -->
         <div class="card">
             <h3>Patch Anti-Cortisolo</h3>
-            <p>Ideale per chi è in fase di "Overclocking" e vuole ridurre l'infiammazione da stress.</p>
+            <p>Ideale per chi è in fase di "Overclocking" e vuole ridurre l'infiammazione da stress. [cite: 21]</p>
             <div class="price">€49.00</div>
             <a href="IL_TUO_LINK_PAYPAL" class="btn">Acquista Protocollo</a>
         </div>
 
-        <!-- Piano 2 -->
         <div class="card">
             <h3>Glow System Reset</h3>
-            <p>Il protocollo completo per riavviare il metabolismo e ritrovare la luminosità della pelle.</p>
+            <p>Il protocollo completo per riavviare il metabolismo e ritrovare la luminosità della pelle. [cite: 21]</p>
             <div class="price">€79.00</div>
             <a href="IL_TUO_LINK_PAYPAL" class="btn">Acquista Protocollo</a>
         </div>
@@ -104,7 +128,7 @@
 </div>
 
 <footer>
-    &copy; 2026 The Glow Code Club. Progettato con precisione.
+    &copy; 2026 The Glow Code Club. Progettato con precisione. [cite: 22]
 </footer>
 
 </body>
